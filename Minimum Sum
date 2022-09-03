@@ -1,0 +1,38 @@
+class Solution{   
+public:
+    string solve(int arr[], int n) {
+    priority_queue<int>q;
+    for(int i=0;i<n;i++)
+    {
+        q.push(arr[i]);
+    }
+    int c=0;
+    string str="";
+    while(!q.empty())
+    {
+        int a=q.top();
+        q.pop();
+        int b=0;
+        if(!q.empty())
+        {
+            b=q.top();
+            q.pop();
+        }
+      
+        int d=(a+b+c)%10;
+        c=(a+b+c)/10;
+       if(d==0&&c==0)
+       break;
+        str.push_back(d+'0');
+       
+    }
+    
+     str.push_back(c+'0');
+     while(str[str.length()-1]=='0')
+     str.pop_back();
+     
+     reverse(str.begin(),str.end());
+   
+     return str;
+    }
+};
